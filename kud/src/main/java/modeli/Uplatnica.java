@@ -20,4 +20,7 @@ public class Uplatnica {
     @ManyToOne
     @JoinColumn(name = "clanId", referencedColumnName = "clanId")
     private Clan clan;
+    @ManyToOne
+    @JoinColumn(name = "userId", referencedColumnName = "userId")
+    private User user;
 }
