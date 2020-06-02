@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/KUD-FPIS.iml" filepath="$PROJECT_DIR$/.idea/KUD-FPIS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kud/kud.iml" filepath="$PROJECT_DIR$/kud/kud.iml" />
+    </modules>
+  </component>
+</project>
