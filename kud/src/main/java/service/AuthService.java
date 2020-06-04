@@ -1,5 +1,7 @@
 package service;
 
+import dto.AuthenticationResponse;
+import dto.LoginRequest;
 import dto.RegisterRequest;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -9,12 +11,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import repozitorijumi.UserRepository;
 import repozitorijumi.VerifikacijaRepository;
+import security.JwtProvider;
 
+import java.time.Instant;
 import java.util.UUID;
 
 @Service
@@ -30,6 +39,12 @@ public class AuthService {
     private VerifikacijaRepository verifikacijaRepository;
     @Autowired
     private JavaMailSender javaMailSender;
+    @Autowired
+    private AuthenticationManager authenticationManager;
+    @Autowired
+    private JwtProvider jwtProvider;
+    @Autowired
+    private RefreshTokenService refreshTokenService;
 
     public void signup(RegisterRequest registerRequest){
         User user = new User();
@@ -69,4 +84,24 @@ public class AuthService {
     }
 
 
+    public AuthenticationResponse login(LoginRequest loginRequest) {
+        Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(),
+                loginRequest.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authenticate);
+        String token = jwtProvider.generateToken(authenticate);
+        return AuthenticationResponse.builder()
+                .authenticationToken(token)
+                .refreshToken(refreshTokenService.generateRefreshToken().getToken())
+                .expiresAt(Instant.now().plusMillis(jwtProvider.getJwtExpirationInMillis()))
+                .email(loginRequest.getEmail())
+                .build();
+    }
+
+    @Transactional(readOnly = true)
+    public User getCurrentUser() {
+        org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.
+                getContext().getAuthentication().getPrincipal();
+        return userRepository.findByEmail(principal.getUsername())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found - " + principal.getUsername()));
+    }
 }
