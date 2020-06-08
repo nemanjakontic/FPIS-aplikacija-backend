@@ -20,6 +20,6 @@ public class Clan {
     private Long clanId;
     private String ime;
     private String prezime;
-    private Date datumRodjenja;
+    private String datumRodjenja;
     private String slika;
 }
