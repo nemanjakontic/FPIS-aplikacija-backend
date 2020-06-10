@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import service.UplataService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/uplate")
 @AllArgsConstructor
@@ -25,6 +27,13 @@ public class UplateController {
     public ResponseEntity<ResponseDto> vratiSveUplate() {
         ResponseDto response = ResponseDto.builder()
                 .uplatnice(uplataService.vratiSve()).poruka("Uspesno vracene sve uplatnice").build();
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/jedna/{uplatnicaId}")
+    public ResponseEntity<ResponseDto> vratiJednuUplatu(@PathVariable Long uplatnicaId) {
+        ResponseDto response = ResponseDto.builder()
+                .uplatnica(uplataService.vratiJednuUplatu(uplatnicaId)).poruka("Uspesno vracena jedna uplatnica").build();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

@@ -18,12 +18,21 @@ public class UplataService {
     private final AuthService authService;
 
     public Uplatnica dodajUplatu(Uplatnica uplatnica) {
-        uplatnica.setUser(authService.getCurrentUser());
+//        uplatnica.setUser(authService.getCurrentUser());
         return uplatnicaRepository.save(uplatnica);
     }
 
     public List<Uplatnica> vratiSve() {
         return uplatnicaRepository.findAll();
+    }
+
+    public Uplatnica vratiJednuUplatu(Long uplatnicaId) {
+        Optional<Uplatnica> uplatnica = uplatnicaRepository.findById(uplatnicaId);
+        if(uplatnica.isPresent()) {
+            return uplatnica.get();
+        } else {
+            throw new RuntimeException("nema uplatnice sa tim id-em");
+        }
     }
 
     public String izbrisiUplatu(Long id) {

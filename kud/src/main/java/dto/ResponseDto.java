@@ -17,4 +17,5 @@ public class ResponseDto {
     private List<Clan> clanovi;
     private List<Uplatnica> uplatnice;
     private String poruka;
+    private Uplatnica uplatnica;
 }
