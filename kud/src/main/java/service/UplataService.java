@@ -57,4 +57,9 @@ public class UplataService {
         }
 
     }
+
+    public Uplatnica izmeniUplatu(Uplatnica uplatnica) {
+//        Optional<Uplatnica> uplatnica = uplatnicaRepository.findById(uplatnica.get().getUplatnicaId());
+        return uplatnicaRepository.save(uplatnica);
+    }
 }

@@ -50,4 +50,11 @@ public class UplateController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @PostMapping("/update")
+    public ResponseEntity<ResponseDto> izmeniUplatu(@RequestBody Uplatnica uplatnica) {
+        ResponseDto response = ResponseDto.builder()
+                .uplatnica(uplataService.izmeniUplatu(uplatnica)).poruka("Izmenjena uplata").build();
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
 }
