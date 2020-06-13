@@ -18,8 +18,11 @@ public class UplateController {
     private final UplataService uplataService;
 
     @PostMapping
-    public ResponseEntity<Uplatnica> dodajUplatu(@RequestBody Uplatnica uplatnica) {
-        return new ResponseEntity<>(uplataService.dodajUplatu(uplatnica), HttpStatus.OK);
+    public ResponseEntity<ResponseDto> dodajUplatu(@RequestBody Uplatnica uplatnica) {
+        ResponseDto response = ResponseDto.builder()
+                .uplatnica(uplataService.dodajUplatu(uplatnica)).poruka("Dodata uplata").build();
+        return new ResponseEntity<>(response, HttpStatus.OK);
+//        return new ResponseEntity<>(uplataService.dodajUplatu(uplatnica), HttpStatus.OK);
     }
 
     // ovo nam u sustini ne treba jer uvek vracamo samo uplate za odredjenog clana
