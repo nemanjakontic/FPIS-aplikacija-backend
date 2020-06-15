@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import modeli.Clan;
+import modeli.PotvrdaOUplati;
 import modeli.Uplatnica;
 
 import java.util.List;
@@ -18,4 +19,6 @@ public class ResponseDto {
     private List<Uplatnica> uplatnice;
     private String poruka;
     private Uplatnica uplatnica;
+    private List<PotvrdaOUplati> potvrde;
+    private PotvrdaOUplati potvrda;
 }
