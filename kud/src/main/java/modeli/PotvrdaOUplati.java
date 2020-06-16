@@ -21,6 +21,6 @@ public class PotvrdaOUplati {
     private Uplatnica uplatnica;
     @ManyToOne
     private Clan clan;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<StavkaPotvrdeOUplati> stavke;
 }

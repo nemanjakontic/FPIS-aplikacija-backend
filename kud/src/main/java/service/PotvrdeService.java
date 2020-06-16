@@ -36,4 +36,8 @@ public class PotvrdeService {
             throw new RuntimeException("Ne postoji clan sa tim id-em");
         }
     }
+
+    public PotvrdaOUplati dodajPotvrdu(PotvrdaOUplati potvrda) {
+        return potvrdeRepository.save(potvrda);
+    }
 }

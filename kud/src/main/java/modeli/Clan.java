@@ -4,11 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -22,4 +20,6 @@ public class Clan {
     private String prezime;
     private String datumRodjenja;
     private String slika;
+    @OneToMany
+    private List<Clanarina> clanarine;
 }

@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ClanRepository extends JpaRepository<Clan, Long> {
-
+public interface ClanarinaRepository extends JpaRepository<Clanarina, Long> {
+//    List<Clanarina> findClanarinaByClanAndPlacenaFalse(Clan clan);
 }

@@ -25,7 +25,6 @@ public class UplateController {
 //        return new ResponseEntity<>(uplataService.dodajUplatu(uplatnica), HttpStatus.OK);
     }
 
-    // ovo nam u sustini ne treba jer uvek vracamo samo uplate za odredjenog clana
     @GetMapping
     public ResponseEntity<ResponseDto> vratiSveUplate() {
         ResponseDto response = ResponseDto.builder()
