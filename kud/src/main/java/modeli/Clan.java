@@ -20,6 +20,7 @@ public class Clan {
     private String prezime;
     private String datumRodjenja;
     private String slika;
-    @OneToMany
+    // vrv ce ovde trebati cascade all
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Clanarina> clanarine;
 }

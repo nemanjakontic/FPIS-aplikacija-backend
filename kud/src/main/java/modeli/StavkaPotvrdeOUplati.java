@@ -14,7 +14,7 @@ public class StavkaPotvrdeOUplati {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.MERGE)
     private Clanarina clanarina;
 //    private String mesec;
 //    private int godina;

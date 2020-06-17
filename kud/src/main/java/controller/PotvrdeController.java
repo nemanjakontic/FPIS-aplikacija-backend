@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import modeli.PotvrdaOUplati;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import service.PotvrdeService;
 
@@ -22,6 +23,7 @@ public class PotvrdeController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @Transactional
     @PostMapping
     public ResponseEntity<ResponseDto> dodajPotvrdu(@RequestBody PotvrdaOUplati potvrda) {
         ResponseDto response = ResponseDto.builder()
