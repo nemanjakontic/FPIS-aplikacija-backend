@@ -18,7 +18,8 @@ public class Clan {
     private Long clanId;
     private String ime;
     private String prezime;
-    private String datumRodjenja;
+//    private String datumRodjenja;
+    private Date datumRodjenja;
     private String slika;
     // vrv ce ovde trebati cascade all
     @OneToMany(cascade = CascadeType.ALL)

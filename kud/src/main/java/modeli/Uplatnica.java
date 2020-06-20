@@ -15,7 +15,8 @@ public class Uplatnica {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long uplatnicaId;
-    private String datumUplate;//trebalo bi da bude date
+//    private String datumUplate;//trebalo bi da bude date
+    private Date datumUplate;
     private double iznos;
     @ManyToOne
     @JoinColumn(name = "clanId", referencedColumnName = "clanId")

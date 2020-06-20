@@ -20,7 +20,7 @@ public class UplateController {
     @PostMapping
     public ResponseEntity<ResponseDto> dodajUplatu(@RequestBody Uplatnica uplatnica) {
         ResponseDto response = ResponseDto.builder()
-                .uplatnica(uplataService.dodajUplatu(uplatnica)).poruka("Dodata uplata").build();
+                .uplatnica(uplataService.dodajUplatu(uplatnica)).poruka("Uplatnica uspesno dodata").build();
         return new ResponseEntity<>(response, HttpStatus.OK);
 //        return new ResponseEntity<>(uplataService.dodajUplatu(uplatnica), HttpStatus.OK);
     }

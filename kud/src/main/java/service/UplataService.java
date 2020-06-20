@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import repozitorijumi.ClanRepository;
 import repozitorijumi.UplatnicaRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,11 +47,12 @@ public class UplataService {
         System.out.println(clan.get());
         if(clan.isPresent()){
             Optional<List<Uplatnica>> lista = uplatnicaRepository.findByClan(clan.get());
-            System.out.println(lista.get());
+//            System.out.println(lista.get());
             if(lista.isPresent()) {
                 return lista.get();
             } else {
-                throw new RuntimeException("Neka greska");
+//                throw new RuntimeException("Neka greska");
+                return new ArrayList<Uplatnica>();
             }
         } else {
             throw new RuntimeException("Ne postoji clan sa tim id-em");
