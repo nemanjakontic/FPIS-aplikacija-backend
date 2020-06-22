@@ -24,4 +24,5 @@ public class Uplatnica {
     @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "userId")
     private User user;
+    private boolean potvrdjena;
 }

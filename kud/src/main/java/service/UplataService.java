@@ -24,7 +24,8 @@ public class UplataService {
     }
 
     public List<Uplatnica> vratiSve() {
-        return uplatnicaRepository.findAll();
+        //ovde refaktor uraditi jer ne vraca sve nego samo one koje nisu potvrdjene
+        return uplatnicaRepository.findByPotvrdjenaFalse().get();
     }
 
     public Uplatnica vratiJednuUplatu(Long uplatnicaId) {

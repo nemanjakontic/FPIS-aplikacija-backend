@@ -11,4 +11,5 @@ import java.util.Optional;
 @Repository
 public interface UplatnicaRepository extends JpaRepository<Uplatnica, Long> {
     Optional<List<Uplatnica>> findByClan(Clan clan);
+    Optional<List<Uplatnica>> findByPotvrdjenaFalse();
 }

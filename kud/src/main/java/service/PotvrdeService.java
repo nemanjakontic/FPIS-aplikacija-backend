@@ -54,6 +54,9 @@ public class PotvrdeService {
                 clanarinaRepository.save(c);
             }
         }
+        // izmena uplatnice
+        potvrda.getUplatnica().setPotvrdjena(true);
+        uplatnicaRepository.save(potvrda.getUplatnica());
         return potvrdaOUplati;
     }
 }
