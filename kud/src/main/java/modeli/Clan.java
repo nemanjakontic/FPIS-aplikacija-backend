@@ -21,6 +21,10 @@ public class Clan {
 //    private String datumRodjenja;
     private Date datumRodjenja;
     private String slika;
+    private String pol;
+    private int visina;
+    private String ansambl;
+    private boolean aktivan;
     // vrv ce ovde trebati cascade all
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Clanarina> clanarine;
